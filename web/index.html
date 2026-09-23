@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>moonphysics — MoonBit wasm 物理沙盒</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand">
+    <span class="logo"></span>
+    <h1>moonphysics</h1>
+    <span class="tagline">Verlet / 位置动力学求解器 · MoonBit → WebAssembly</span>
+  </div>
+  <div class="header-right">
+    <span id="particles-badge" class="badge">0 粒子</span>
+    <span id="fps-badge" class="badge">— fps</span>
+    <span id="solver-badge" class="badge">wasm 求解</span>
+  </div>
+</header>
+
+<main>
+  <section id="toolbar">
+    <div class="tool-group" id="tools">
+      <button data-tool="grab" class="on">✋ 抓取</button>
+      <button data-tool="ball">● 小球</button>
+      <button data-tool="box">■ 箱子</button>
+      <button data-tool="rope">〰 绳子</button>
+      <button data-tool="cloth">▦ 布料</button>
+    </div>
+    <div class="sliders">
+      <label>重力 <input type="range" id="s-gravity" min="0" max="3000" value="1300" step="10"><span id="v-gravity">1300</span></label>
+      <label>弹性 <input type="range" id="s-restitution" min="0" max="100" value="35"><span id="v-restitution">0.35</span></label>
+      <label>摩擦 <input type="range" id="s-friction" min="0" max="100" value="75"><span id="v-friction">0.75</span></label>
+      <label>精度 <input type="range" id="s-iterations" min="1" max="16" value="8"><span id="v-iterations">8</span></label>
+    </div>
+    <div class="actions">
+      <button id="boom-btn" class="warn">💥 爆炸</button>
+      <button id="pause-btn">⏸ 暂停</button>
+      <button id="clear-btn">🗑 清空</button>
+    </div>
+  </section>
+
+  <canvas id="stage" width="1200" height="640"></canvas>
+
+  <section id="lower">
+    <div class="panel">
+      <h2>场景预设</h2>
+      <div class="scenes">
+        <button data-scene="pit">球池 ×300</button>
+        <button data-scene="pyramid">箱子金字塔</button>
+        <button data-scene="curtain">幕布 + 球雨</button>
+        <button data-scene="chains">锁链与球</button>
+      </div>
+      <p class="hint">提示：选「抓取」拖动任意物体、甩出去；布料可以直接撕开。选其他工具在画布上点击放置。</p>
+    </div>
+    <div class="panel">
+      <h2>wasm vs JavaScript 基准</h2>
+      <p class="hint">同一 300 球场景、同一算法（Verlet + 空间哈希 + 位置碰撞），wasm 内核与对照 JS 实现各跑 300 步。</p>
+      <button id="bench-btn">▶ 运行基准</button>
+      <pre id="bench-out"></pre>
+    </div>
+  </section>
+
+  <footer>
+    <span>求解器、空间哈希、约束系统全部由 MoonBit 编译为 wasm ·
+      <a href="https://github.com/sdjm5/moonphysics" target="_blank" rel="noreferrer">github.com/sdjm5/moonphysics</a></span>
+  </footer>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>

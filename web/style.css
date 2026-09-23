@@ -1,0 +1,92 @@
+/* moonphysics — dark lab aesthetic */
+:root {
+  --bg: #0c0e11;
+  --panel: #15181e;
+  --panel-edge: #242a33;
+  --text: #d7dce4;
+  --dim: #7c8593;
+  --accent: #4fd1c5;    /* teal — the physics color */
+  --accent-2: #ff8b3d;  /* amber — interaction */
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  padding-bottom: 3em;
+}
+header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 13px 22px;
+  background: linear-gradient(180deg, #181c23, #10131a);
+  border-bottom: 1px solid var(--panel-edge);
+}
+.brand { display: flex; align-items: baseline; gap: 12px; }
+.logo {
+  width: 14px; height: 14px; border-radius: 50%; align-self: center;
+  background: radial-gradient(circle at 35% 35%, #b2f5ee, var(--accent) 60%, #0f5f58);
+  box-shadow: 0 0 12px rgba(79, 209, 197, .7);
+}
+.brand h1 { margin: 0; font-size: 22px; letter-spacing: 2px; }
+.tagline { color: var(--dim); font-size: 12px; }
+.header-right { display: flex; gap: 8px; }
+.badge {
+  font-family: Consolas, monospace; font-size: 12px;
+  border: 1px solid var(--panel-edge); border-radius: 4px;
+  padding: 4px 8px; color: var(--accent); background: #10141a;
+}
+main { max-width: 1240px; margin: 0 auto; padding: 0 16px; }
+
+#toolbar {
+  display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+  background: var(--panel); border: 1px solid var(--panel-edge);
+  border-radius: 8px; padding: 10px 14px; margin: 14px 0;
+}
+.tool-group { display: flex; gap: 4px; }
+.tool-group button, .actions button, .scenes button, #bench-btn {
+  background: #10141a; color: var(--dim);
+  border: 1px solid var(--panel-edge); border-radius: 5px;
+  font-size: 12px; padding: 7px 12px; cursor: pointer;
+}
+.tool-group button.on { color: var(--accent-2); border-color: var(--accent-2); background: #241a10; }
+.tool-group button:hover, .scenes button:hover, #bench-btn:hover { color: var(--text); }
+.actions button.warn { color: #ff9d6b; }
+.actions button.warn:hover { border-color: #ff8b3d; }
+.sliders { display: flex; gap: 16px; flex-wrap: wrap; flex: 1; }
+.sliders label {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; color: var(--dim); white-space: nowrap;
+}
+.sliders input[type=range] { width: 90px; accent-color: var(--accent); }
+.sliders span { font-family: Consolas, monospace; color: var(--accent); min-width: 38px; }
+.actions { display: flex; gap: 6px; }
+
+#stage {
+  width: 100%; display: block;
+  background: #090b0e;
+  border: 1px solid var(--panel-edge); border-radius: 8px;
+  touch-action: none;
+}
+
+#lower { display: grid; grid-template-columns: 1.1fr 1fr; gap: 14px; margin-top: 14px; }
+.panel {
+  background: var(--panel); border: 1px solid var(--panel-edge);
+  border-radius: 8px; padding: 12px 14px 16px;
+}
+.panel h2 {
+  margin: 0 0 10px; font-size: 11px; letter-spacing: 2.5px;
+  color: var(--dim); border-bottom: 1px solid var(--panel-edge);
+  padding-bottom: 8px; font-weight: 600;
+}
+.scenes { display: flex; gap: 6px; flex-wrap: wrap; }
+.hint { color: var(--dim); font-size: 12px; line-height: 1.6; }
+#bench-btn { width: 100%; color: var(--accent); border-color: var(--accent); }
+#bench-out {
+  font-family: Consolas, monospace; font-size: 11.5px;
+  color: var(--dim); margin: 10px 0 0; min-height: 60px; white-space: pre-wrap;
+}
+#bench-out .win { color: var(--accent); }
+
+footer { text-align: center; color: var(--dim); font-size: 11px; margin-top: 24px; }
+footer a { color: var(--accent); text-decoration: none; }
